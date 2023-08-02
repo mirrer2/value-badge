@@ -27,7 +27,7 @@ export const HomeHeader = styled.div`
 export const HomeFooter = styled.div`
   ${({ theme }) => theme.flexColumnSet()};
 
-  & > button {
+  & > a > button {
     width: 19.6875rem;
     height: 3.4375rem;
     border-radius: 0.4375rem;
@@ -37,11 +37,11 @@ export const HomeFooter = styled.div`
     transition: opacity 250ms ease-in;
   }
 
-  & > button:hover {
+  & > a > button:hover {
     opacity: 50%;
   }
 
-  & > button:active {
+  & > a > button:active {
     opacity: 100%;
   }
 

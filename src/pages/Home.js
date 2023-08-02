@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 import Layout from 'components/Layout';
 import { HomeWrapper, HomeHeader, HomeFooter } from 'styles/pages/home';
@@ -13,7 +14,9 @@ const Home = () => {
         </HomeHeader>
 
         <HomeFooter>
-          <button type="button">눌러서 시작하기</button>
+          <Link to="/step1">
+            <button type="button">눌러서 시작하기</button>
+          </Link>
 
           <img src="/images/Home/FooterLogo.png" alt="Home Footer Logo" />
           <p>ⓒ BLOOM COMPANY</p>
