@@ -15,6 +15,7 @@ const Step = () => {
   const [text3, onChangeText3] = useInput('');
 
   const [isNumInputs, setIsNumInputs] = useState(false);
+  const [isTextInputs, setIsTextInputs] = useState(false);
   const [showBadge, setShowBadge] = useState(false);
 
   const onSubmitStep1Form = useCallback(
@@ -40,6 +41,10 @@ const Step = () => {
   useEffect(() => {
     setIsNumInputs(num1 !== '' && num2 !== '' && num3 !== '');
   }, [num1, num2, num3]);
+
+  useEffect(() => {
+    setIsTextInputs(text1 !== '' && text2 !== '' && text3 !== '');
+  }, [text1, text2, text3]);
 
   return (
     <Layout>
@@ -73,7 +78,7 @@ const Step = () => {
         </StepHeader>
 
         {showBadge ? (
-          <StepForm onSubmit={onSubmitStep2Form}>
+          <StepForm onSubmit={onSubmitStep2Form} isTextInputs={isTextInputs}>
             <div>
               <div>
                 <img src={getImagePath(num1)} alt={`Step2 Badge ${num1}`} />
@@ -82,7 +87,6 @@ const Step = () => {
                   id="text1"
                   name="text1"
                   placeholder="입력하기"
-                  maxLength={7}
                   value={text1}
                   onChange={onChangeText1}
                 />
@@ -95,7 +99,6 @@ const Step = () => {
                   id="text2"
                   name="text2"
                   placeholder="입력하기"
-                  maxLength={7}
                   value={text2}
                   onChange={onChangeText2}
                 />
@@ -108,17 +111,15 @@ const Step = () => {
                   id="text3"
                   name="text3"
                   placeholder="입력하기"
-                  maxLength={7}
                   value={text3}
                   onChange={onChangeText3}
                 />
               </div>
             </div>
-
             <button type="submit">작성 완료</button>
           </StepForm>
         ) : (
-          <StepForm onSubmit={onSubmitStep1Form}>
+          <StepForm onSubmit={onSubmitStep1Form} isNumInputs={isNumInputs}>
             <div>
               <input type="number" id="num1" name="num1" placeholder="1" value={num1} onChange={onChangeNum1} />
               <input type="number" id="num2" name="num2" placeholder="2" value={num2} onChange={onChangeNum2} />
@@ -134,7 +135,7 @@ const Step = () => {
 
           <div>
             <p>ⓒBLOOM COMPANY</p>
-            <img src="/images/Step1/FooterLogo.png" alt="Step1 Footer Logo" />
+            <img src="/images/Step/FooterLogo.png" alt="Step Footer Logo" />
           </div>
         </StepFooter>
       </StepWrapper>

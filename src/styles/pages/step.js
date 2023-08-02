@@ -113,6 +113,7 @@ export const StepForm = styled.form`
     font-weight: 500;
     line-height: 1.25rem;
     letter-spacing: -0.03125rem;
+    opacity: ${props => (props.isNumInputs | props.isTextInputs ? '100%' : '50%')};
   }
 `;
 
