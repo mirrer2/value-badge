@@ -66,7 +66,19 @@ const GlobalStyles = createGlobalStyle`
 
   body {
     -ms-overflow-style: none;
-  } 
+  }
+  
+  input[type=number]::-webkit-inner-spin-button,
+  input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+  input[type=number] {
+    -webkit-appearance: none;
+    -moz-appearance: textfield;
+    appearance: none;
+  }
 `;
 
 export default GlobalStyles;
