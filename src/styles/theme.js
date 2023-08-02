@@ -1,6 +1,6 @@
 const theme = {
   colors: {
-    primary: '#ffffff',
+    bloomGreen: '#DAE233',
   },
   calcRem: pxSize => {
     return `${pxSize / 16}rem`;
