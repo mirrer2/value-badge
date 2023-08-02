@@ -14,7 +14,7 @@ const Home = () => {
         </HomeHeader>
 
         <HomeFooter>
-          <Link to="/step1">
+          <Link to="/step">
             <button type="button">눌러서 시작하기</button>
           </Link>
 
