@@ -79,6 +79,8 @@ const Step = () => {
         setShowResult(true);
       }
 
+      console.log('폼2 실행!!');
+
       if (!shareImageRef.current) return;
 
       if (stepHeaderRef.current) {
@@ -132,7 +134,8 @@ const Step = () => {
   useEffect(() => {
     const combineImage = async () => {
       if (showResult) {
-        if (!shareImageRef.current) return;
+        if (!shareImageRef.current) return; // 두번째 결합에서 여기 조건문에 걸려서 실행이안대
+        console.log('이미지 결합 시도');
 
         try {
           const image = shareImageRef.current;
@@ -151,7 +154,7 @@ const Step = () => {
     };
 
     combineImage();
-  }, [showResult, num1, num2, num3, text1, text2, text3]);
+  }, [showResult, showBadge, showResult, num1, num2, num3, text1, text2, text3]);
 
   useEffect(() => {
     setIsNumInputs(num1 !== '' && num2 !== '' && num3 !== '');
@@ -161,10 +164,9 @@ const Step = () => {
     setIsTextInputs(text1 !== '' && text2 !== '' && text3 !== '');
   }, [text1, text2, text3]);
 
-  // 5. 저장된 state값 확인
   useEffect(() => {
-    console.log(num1, num2, num3, text1, text2, text3);
-  }, [num1, num2, num3, text1, text2, text3]);
+    console.log(combinedImageSrc);
+  }, [combinedImageSrc]);
 
   return (
     <Layout>
