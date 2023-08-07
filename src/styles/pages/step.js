@@ -64,40 +64,9 @@ export const StepForm = styled.form`
     margin-bottom: 1.19rem;
   }
 
-  /* & > div > div > textarea {
-    text-align: center;
-    width: 6rem;
-    padding: 0.5rem 0.25rem;
-    border-radius: 0.3125rem;
-    border: 1px solid #d8d8d8;
-    font-family: Pretendard;
-    font-size: 0.875rem;
-    font-style: normal;
-    font-weight: 500;
-    line-height: 140%;
-    letter-spacing: -0.03125rem;
-    margin-bottom: 16.75rem;
-    resize: none;
-  } */
-
   & > div > div > input::placeholder {
     color: #bbb;
   }
-
-  /* & > div > input {
-    text-align: center;
-    width: 6rem;
-    height: 6rem;
-    border-radius: 0.4375rem;
-    border: 1px solid #d8d8d8;
-    background: #ffffff;
-    font-family: Montserrat;
-    font-size: 1.375rem;
-    font-style: normal;
-    font-weight: 400;
-    line-height: 160%;
-    margin-bottom: 20.38rem;
-  } */
 
   & > div > input::placeholder {
     color: #bbb;
@@ -159,6 +128,7 @@ export const StepFormInput = styled.input`
 export const StepFormTextarea = styled.textarea`
   text-align: center;
   width: 6rem;
+  height: auto;
   padding: 0.5rem 0.25rem;
   border-radius: 0.3125rem;
   border: 1px solid #d8d8d8;

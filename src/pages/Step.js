@@ -117,6 +117,19 @@ const Step = () => {
   }, []);
 
   useEffect(() => {
+    const adjustTextareaHeight = (textareaRef, text) => {
+      if (textareaRef.current && text) {
+        textareaRef.current.style.height = 'auto';
+        textareaRef.current.style.height = textareaRef.current.scrollHeight + 'px';
+      }
+    };
+
+    adjustTextareaHeight(textareaRef1, text1);
+    adjustTextareaHeight(textareaRef2, text2);
+    adjustTextareaHeight(textareaRef3, text3);
+  }, [showBadge]);
+
+  useEffect(() => {
     const combineImage = async () => {
       if (showResult) {
         if (!shareImageRef.current) return;
@@ -313,7 +326,6 @@ const Step = () => {
                 value={num1}
                 onChange={onChangeNum1}
                 inputMode="numeric"
-                $num1={num1}
               />
               <StepFormInput
                 type="number"
@@ -323,7 +335,6 @@ const Step = () => {
                 value={num2}
                 onChange={onChangeNum2}
                 inputMode="numeric"
-                $num1={num2}
               />
               <StepFormInput
                 type="number"
@@ -333,7 +344,6 @@ const Step = () => {
                 value={num3}
                 onChange={onChangeNum3}
                 inputMode="numeric"
-                $num1={num3}
               />
             </div>
 
