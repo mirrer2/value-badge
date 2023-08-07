@@ -47,6 +47,7 @@ const Step = () => {
     if (showResult) {
       setShowResult(false);
       setShowBadge(true);
+      setShowCombinedImage(false);
     } else if (showBadge) {
       setShowBadge(false);
     } else {
@@ -79,7 +80,7 @@ const Step = () => {
         setShowResult(true);
       }
 
-      console.log('폼2 실행!!');
+      console.log('폼222 실행!!');
 
       if (!shareImageRef.current) return;
 
@@ -129,12 +130,12 @@ const Step = () => {
     adjustTextareaHeight(textareaRef1, text1);
     adjustTextareaHeight(textareaRef2, text2);
     adjustTextareaHeight(textareaRef3, text3);
-  }, [showBadge]);
+  }, [showBadge, text1, text2, text3]);
 
   useEffect(() => {
     const combineImage = async () => {
       if (showResult) {
-        if (!shareImageRef.current) return; // 두번째 결합에서 여기 조건문에 걸려서 실행이안대
+        if (!shareImageRef.current) return; // 두번째 결합에서 여기 조건문에 걸려서 실행이안대, state를추
         console.log('이미지 결합 시도');
 
         try {
@@ -154,7 +155,7 @@ const Step = () => {
     };
 
     combineImage();
-  }, [showResult, showBadge, showResult, num1, num2, num3, text1, text2, text3]);
+  }, [showResult, showBadge, num1, num2, num3, text1, text2, text3]);
 
   useEffect(() => {
     setIsNumInputs(num1 !== '' && num2 !== '' && num3 !== '');
