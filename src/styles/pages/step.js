@@ -1,5 +1,7 @@
 import styled from 'styled-components';
 
+const hasValue = value => value.trim() !== '';
+
 export const StepWrapper = styled.div`
   height: 100%;
   background-color: #fcfcfc;
@@ -62,7 +64,7 @@ export const StepForm = styled.form`
     margin-bottom: 1.19rem;
   }
 
-  & > div > div > textarea {
+  /* & > div > div > textarea {
     text-align: center;
     width: 6rem;
     padding: 0.5rem 0.25rem;
@@ -76,13 +78,13 @@ export const StepForm = styled.form`
     letter-spacing: -0.03125rem;
     margin-bottom: 16.75rem;
     resize: none;
-  }
+  } */
 
   & > div > div > input::placeholder {
     color: #bbb;
   }
 
-  & > div > input {
+  /* & > div > input {
     text-align: center;
     width: 6rem;
     height: 6rem;
@@ -95,7 +97,7 @@ export const StepForm = styled.form`
     font-weight: 400;
     line-height: 160%;
     margin-bottom: 20.38rem;
-  }
+  } */
 
   & > div > input::placeholder {
     color: #bbb;
@@ -125,6 +127,61 @@ export const StepForm = styled.form`
   & > button:active {
     opacity: 100%;
   }
+`;
+
+export const StepFormInput = styled.input`
+  text-align: center;
+  width: 6rem;
+  height: 6rem;
+  border-radius: 0.4375rem;
+  border: 1px solid #d8d8d8;
+  background: #ffffff;
+  font-family: Montserrat;
+  font-size: 1.375rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 160%;
+  margin-bottom: 20.38rem;
+  transition: border-color 200ms ease-in;
+
+  &:focus {
+    outline: none;
+    border-color: black;
+  }
+
+  ${props =>
+    hasValue(props.value) &&
+    `
+    border-color: #DAE233;
+  `}
+`;
+
+export const StepFormTextarea = styled.textarea`
+  text-align: center;
+  width: 6rem;
+  padding: 0.5rem 0.25rem;
+  border-radius: 0.3125rem;
+  border: 1px solid #d8d8d8;
+  font-family: Pretendard;
+  font-size: 0.875rem;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 140%;
+  letter-spacing: -0.03125rem;
+  margin-bottom: 16.75rem;
+  resize: none;
+  transition: border-color 200ms ease-in;
+
+  &:focus {
+    outline: none;
+    border-color: black;
+  }
+
+  ${props =>
+    hasValue(props.value) &&
+    `
+    border-color: #DAE233;
+  `}
 `;
 
 export const StepFooter = styled.div`

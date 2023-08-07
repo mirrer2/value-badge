@@ -9,6 +9,8 @@ import {
   StepWrapper,
   StepHeader,
   StepForm,
+  StepFormInput,
+  StepFormTextarea,
   StepFooter,
   ResultImageWrapper,
   ResultHeader,
@@ -196,7 +198,7 @@ const Step = () => {
             <div>
               <div>
                 <img src={getImagePath(num1)} alt={`Step2 Badge ${num1}`} />
-                <textarea
+                <StepFormTextarea
                   rows={1}
                   ref={textareaRef1}
                   type="text"
@@ -213,7 +215,7 @@ const Step = () => {
 
               <div>
                 <img src={getImagePath(num2)} alt={`Step2 Badge ${num2}`} />
-                <textarea
+                <StepFormTextarea
                   rows={1}
                   ref={textareaRef2}
                   type="text"
@@ -230,7 +232,7 @@ const Step = () => {
 
               <div>
                 <img src={getImagePath(num3)} alt={`Step2 Badge ${num3}`} />
-                <textarea
+                <StepFormTextarea
                   rows={1}
                   ref={textareaRef3}
                   type="text"
@@ -303,7 +305,7 @@ const Step = () => {
         ) : (
           <StepForm onSubmit={onSubmitStep1Form} $isNumInputs={isNumInputs}>
             <div>
-              <input
+              <StepFormInput
                 type="number"
                 id="num1"
                 name="num1"
@@ -311,8 +313,9 @@ const Step = () => {
                 value={num1}
                 onChange={onChangeNum1}
                 inputMode="numeric"
+                $num1={num1}
               />
-              <input
+              <StepFormInput
                 type="number"
                 id="num2"
                 name="num2"
@@ -320,8 +323,9 @@ const Step = () => {
                 value={num2}
                 onChange={onChangeNum2}
                 inputMode="numeric"
+                $num1={num2}
               />
-              <input
+              <StepFormInput
                 type="number"
                 id="num3"
                 name="num3"
@@ -329,6 +333,7 @@ const Step = () => {
                 value={num3}
                 onChange={onChangeNum3}
                 inputMode="numeric"
+                $num1={num3}
               />
             </div>
 
