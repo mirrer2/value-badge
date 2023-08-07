@@ -32,7 +32,7 @@ const GlobalStyles = createGlobalStyle`
   html,
   body,
   #app {
-    height: 100vh; 
+    height: 100%; 
     font-family: 'DM Sans', sans-serif;
   }
 
@@ -78,6 +78,10 @@ const GlobalStyles = createGlobalStyle`
     -webkit-appearance: none;
     -moz-appearance: textfield;
     appearance: none;
+  }
+
+  input:focus::placeholder {
+    color: transparent !important;
   }
 `;
 
