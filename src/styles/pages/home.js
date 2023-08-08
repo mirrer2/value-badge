@@ -1,10 +1,8 @@
 import styled from 'styled-components';
 
 export const HomeWrapper = styled.div`
-  height: 100%;
   padding: 9.65rem 1.88rem 3.5rem 1.88rem;
   background-color: ${({ theme }) => theme.colors.bloomGreen};
-  /* overflow: auto; */
 `;
 
 export const HomeHeader = styled.div`

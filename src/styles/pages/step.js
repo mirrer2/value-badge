@@ -3,9 +3,7 @@ import styled from 'styled-components';
 const hasValue = value => value.trim() !== '';
 
 export const StepWrapper = styled.div`
-  height: 100%;
   background-color: #fcfcfc;
-  overflow: auto;
 `;
 
 export const StepHeader = styled.header`
@@ -222,6 +220,7 @@ export const ResultHeader = styled.div`
 
 export const ResultImageWrapper = styled.div`
   margin-bottom: 6rem;
+  background-color: #fcfcfc;
 `;
 
 export const ResultImageHeader = styled.h1`
