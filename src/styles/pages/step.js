@@ -5,7 +5,6 @@ const hasValue = value => value.trim() !== '';
 export const StepWrapper = styled.div`
   height: 100%;
   background-color: #fcfcfc;
-  overflow: auto;
 `;
 
 export const StepHeader = styled.header`
