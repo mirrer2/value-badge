@@ -135,7 +135,7 @@ const Step = () => {
   useEffect(() => {
     const combineImage = async () => {
       if (showResult) {
-        if (!shareImageRef.current) return; // 두번째 결합에서 여기 조건문에 걸려서 실행이안대, state를추
+        if (!shareImageRef.current) return;
         console.log('이미지 결합 시도');
 
         try {
