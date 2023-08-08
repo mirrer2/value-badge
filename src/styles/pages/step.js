@@ -241,6 +241,7 @@ export const ResultImage = styled(StepForm)`
   & > div > div > div {
     ${({ theme }) => theme.flexSet()};
     width: 6rem;
+    /* height: 4rem; */
     padding: 0.5rem 0.75rem;
     border-radius: 1.125rem;
     border: 1px solid #d8d8d8;

@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { Helmet } from 'react-helmet';
 
 import Layout from 'components/Layout';
 import { HomeWrapper, HomeHeader, HomeFooter } from 'styles/pages/home';
@@ -7,6 +8,10 @@ import { HomeWrapper, HomeHeader, HomeFooter } from 'styles/pages/home';
 const Home = () => {
   return (
     <Layout>
+      <Helmet>
+        <title>Value Badge</title>
+        <meta name="theme-color" content="#DAE233" />
+      </Helmet>
       <HomeWrapper>
         <HomeHeader>
           <img src="/images/Home/HeaderLogo.png" alt="Home Header Logo" />

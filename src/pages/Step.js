@@ -1,6 +1,7 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { saveAs } from 'file-saver';
+import { Helmet } from 'react-helmet';
 import html2canvas from 'html2canvas';
 
 import Layout from 'components/Layout';
@@ -171,6 +172,11 @@ const Step = () => {
 
   return (
     <Layout>
+      <Helmet>
+        <title>Value Badge | Steps</title>
+        <meta name="theme-color" content="#FCFCFC" />
+      </Helmet>
+
       <StepWrapper>
         <StepHeader $showResult={showResult} ref={stepHeaderRef}>
           <button onClick={onClickGoBackBtn}>
