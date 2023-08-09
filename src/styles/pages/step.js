@@ -139,7 +139,7 @@ export const StepFormTextarea = styled.textarea`
   border-radius: 0.3125rem;
   border: 1px solid #d8d8d8;
   font-family: Pretendard;
-  font-size: 0.875rem;
+  font-size: 1rem;
   font-style: normal;
   font-weight: 500;
   line-height: 140%;
