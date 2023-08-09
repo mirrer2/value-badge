@@ -11,11 +11,6 @@ export const StepHeader = styled.header`
 
   & > button > img {
     margin-bottom: 1.06rem;
-    transition: opacity 200ms ease-in;
-  }
-
-  & > button > img:hover {
-    opacity: 50%;
   }
 
   & > div {
@@ -84,16 +79,24 @@ export const StepForm = styled.form`
     line-height: 1.25rem;
     letter-spacing: -0.03125rem;
     opacity: ${props => (props.$isNumInputs | props.$isTextInputs ? '100%' : '50%')};
-    transition: opacity 250ms ease-in;
   }
+`;
 
-  & > button:hover {
-    opacity: 50%;
-  }
-
-  & > button:active {
-    opacity: 100%;
-  }
+export const Step1FormBtn = styled.button`
+  width: 19.6875rem;
+  height: 3.4375rem;
+  border-radius: 0.4375rem;
+  background-color: ${({ theme }) => theme.colors.bloomGreen};
+  color: #ffffff;
+  text-align: center;
+  font-family: Pretendard Variable;
+  font-size: 1.125rem;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 1.25rem;
+  letter-spacing: -0.03125rem;
+  margin-top: 18.44rem;
+  opacity: ${props => (props.$isNumInputs | props.$isTextInputs ? '100%' : '50%')};
 `;
 
 export const StepFormInput = styled.input`
@@ -108,19 +111,24 @@ export const StepFormInput = styled.input`
   font-style: normal;
   font-weight: 400;
   line-height: 160%;
-  margin-bottom: 20.38rem;
+  margin-bottom: 0.75rem;
   transition: border-color 200ms ease-in;
 
   &:focus {
     outline: none;
-    border-color: black;
   }
+`;
 
-  ${props =>
-    hasValue(props.value) &&
-    `
-    border-color: #DAE233;
-  `}
+export const StepFormError = styled.p`
+  visibility: ${props => (props.$showError ? 'visible' : 'hidden')};
+  color: #ed2b2b;
+  text-align: start;
+  font-family: Pretendard Variable;
+  font-size: 0.875rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.1875rem;
+  letter-spacing: -0.03125rem;
 `;
 
 export const StepFormTextarea = styled.textarea`
@@ -219,6 +227,7 @@ export const ResultHeader = styled.div`
 `;
 
 export const ResultImageWrapper = styled.div`
+  transform: ${props => (props.$showResult ? 'translateY(-200%)' : 'translateY(0)')};
   margin-bottom: 6rem;
   background-color: #fcfcfc;
 `;
@@ -297,14 +306,5 @@ export const ResultBtn = styled.div`
     font-weight: 500;
     line-height: 1.25rem;
     letter-spacing: -0.03125rem;
-    transition: opacity 250ms ease-in;
-  }
-
-  & > button:hover {
-    opacity: 50%;
-  }
-
-  & > button:active {
-    opacity: 100%;
   }
 `;

@@ -66,6 +66,7 @@ const GlobalStyles = createGlobalStyle`
 
   body {
     -ms-overflow-style: none;
+    line-height: 0.5 !important;
   }
   
   input[type=number]::-webkit-inner-spin-button,

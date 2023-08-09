@@ -1,6 +1,7 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { saveAs } from 'file-saver';
+import { Helmet } from 'react-helmet';
 import html2canvas from 'html2canvas';
 
 import Layout from 'components/Layout';
@@ -10,6 +11,8 @@ import {
   StepHeader,
   StepForm,
   StepFormInput,
+  Step1FormBtn,
+  StepFormError,
   StepFormTextarea,
   StepFooter,
   ResultImageWrapper,
@@ -19,11 +22,22 @@ import {
   ResultFooter,
   ResultBtn,
 } from 'styles/pages/step';
+import { styled } from 'styled-components';
 
 const Step = () => {
-  const [num1, onChangeNum1] = useInput('', 'num1');
-  const [num2, onChangeNum2] = useInput('', 'num2');
-  const [num3, onChangeNum3] = useInput('', 'num3');
+  const [num1, onChangeNum1, setNum1, num1Error] = useInput('', 'num1');
+  const [num2, onChangeNum2, setNum2, num2Error] = useInput('', 'num2');
+  const [num3, onChangeNum3, setNum3, num3Error] = useInput('', 'num3');
+
+  const [numInputErrors, setNumInputErrors] = useState({
+    num1: '',
+    num2: '',
+    num3: '',
+  });
+
+  const [isFocusedNum1, setIsFocusedNum1] = useState(false);
+  const [isFocusedNum2, setIsFocusedNum2] = useState(false);
+  const [isFocusedNum3, setIsFocusedNum3] = useState(false);
 
   const [text1, onChangeText1] = useInput('', 'text1');
   const [text2, onChangeText2] = useInput('', 'text2');
@@ -59,14 +73,30 @@ const Step = () => {
     return `/images/Badge/${num}.png`;
   }, []);
 
+  const getInputBorderStyle = (value, isValid, isFocused) => {
+    if (!isFocused && value === '') {
+      return '#BBBBBB'; // 아무런 값도 입력되지 않았으면 회색
+    } else if (!isValid) {
+      return '#ED2B2B'; // 유효성 검사를 실패하면 빨간색
+    } else if (isFocused) {
+      return '#111111'; // 값을 입력 중이면 검은색
+    } else if (value === '') {
+      return '#BBBBBB'; // 입력된 값이 없으면 회색 (이 부분을 추가하면 됩니다)
+    } else {
+      return '#DAE233'; // 유효성 검사를 통과하면 노란색
+    }
+  };
+  const isValidNumber = num => {
+    const parsedNum = parseInt(num);
+    return !isNaN(parsedNum) && parsedNum >= 1 && parsedNum <= 54;
+  };
+
   const onSubmitStep1Form = useCallback(
     e => {
       e.preventDefault();
-      if (isNumInputs) setShowBadge(true);
 
-      if (stepHeaderRef.current) {
-        stepHeaderRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      }
+      if (isNumInputs) setShowBadge(true);
+      stepHeaderRef.current.scrollIntoView({ behavior: 'instant', block: 'start' });
     },
     [isNumInputs],
   );
@@ -80,13 +110,8 @@ const Step = () => {
         setShowResult(true);
       }
 
-      console.log('폼222 실행!!');
-
+      stepHeaderRef.current.scrollIntoView({ behavior: 'instant', block: 'start' });
       if (!shareImageRef.current) return;
-
-      if (stepHeaderRef.current) {
-        stepHeaderRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      }
     },
     [isTextInputs],
   );
@@ -171,6 +196,11 @@ const Step = () => {
 
   return (
     <Layout>
+      <Helmet>
+        <title>Value Badge | Steps</title>
+        <meta name="theme-color" content="#FCFCFC" />
+      </Helmet>
+
       <StepWrapper>
         <StepHeader $showResult={showResult} ref={stepHeaderRef}>
           <button onClick={onClickGoBackBtn}>
@@ -273,7 +303,7 @@ const Step = () => {
                 <img src={combinedImageSrc} alt="Combined Result" />
               </ResultImageWrapper>
             ) : (
-              <ResultImageWrapper ref={shareImageRef}>
+              <ResultImageWrapper ref={shareImageRef} $showResult={showResult}>
                 <ResultImageHeader>My Value</ResultImageHeader>
 
                 <ResultImage>
@@ -328,6 +358,18 @@ const Step = () => {
                 placeholder="1"
                 value={num1}
                 onChange={onChangeNum1}
+                onFocus={() => setIsFocusedNum1(true)}
+                onBlur={() => {
+                  setIsFocusedNum1(false);
+                  if (!isValidNumber(num1)) {
+                    setNumInputErrors(prevErrors => ({ ...prevErrors, num1: num1 ? '유효하지 않은 숫자입니다.' : '' }));
+                  } else {
+                    setNumInputErrors(prevErrors => ({ ...prevErrors, num1: '' }));
+                  }
+                }}
+                style={{
+                  borderColor: getInputBorderStyle(num1, isValidNumber(num1) || num1 === '', isFocusedNum1),
+                }}
                 inputMode="numeric"
               />
               <StepFormInput
@@ -337,6 +379,18 @@ const Step = () => {
                 placeholder="2"
                 value={num2}
                 onChange={onChangeNum2}
+                onFocus={() => setIsFocusedNum2(true)}
+                onBlur={() => {
+                  setIsFocusedNum2(false);
+                  if (!isValidNumber(num2)) {
+                    setNumInputErrors(prevErrors => ({ ...prevErrors, num2: num2 ? '유효하지 않은 숫자입니다.' : '' }));
+                  } else {
+                    setNumInputErrors(prevErrors => ({ ...prevErrors, num2: '' }));
+                  }
+                }}
+                style={{
+                  borderColor: getInputBorderStyle(num2, isValidNumber(num2) || num2 === '', isFocusedNum2),
+                }}
                 inputMode="numeric"
               />
               <StepFormInput
@@ -346,11 +400,27 @@ const Step = () => {
                 placeholder="3"
                 value={num3}
                 onChange={onChangeNum3}
+                onFocus={() => setIsFocusedNum3(true)}
+                onBlur={() => {
+                  setIsFocusedNum3(false);
+                  if (!isValidNumber(num3)) {
+                    setNumInputErrors(prevErrors => ({ ...prevErrors, num3: num3 ? '유효하지 않은 숫자입니다.' : '' }));
+                  } else {
+                    setNumInputErrors(prevErrors => ({ ...prevErrors, num3: '' }));
+                  }
+                }}
+                style={{
+                  borderColor: getInputBorderStyle(num3, isValidNumber(num3) || num3 === '', isFocusedNum3),
+                }}
                 inputMode="numeric"
               />
             </div>
 
-            <button type="submit">입력 완료</button>
+            <StepFormError $showError={num1Error || num2Error || num3Error}>
+              1부터 54 사이의 숫자를 입력해주세요
+            </StepFormError>
+
+            <Step1FormBtn type="submit">입력 완료</Step1FormBtn>
           </StepForm>
         )}
 
