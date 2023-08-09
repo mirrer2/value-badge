@@ -33,15 +33,6 @@ export const HomeFooter = styled.div`
     background-color: #000000;
     color: #ffffff;
     margin-bottom: 7.31rem;
-    transition: opacity 250ms ease-in;
-  }
-
-  & > a > button:hover {
-    opacity: 50%;
-  }
-
-  & > a > button:active {
-    opacity: 100%;
   }
 
   & > img {

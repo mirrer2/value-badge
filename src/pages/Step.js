@@ -22,6 +22,7 @@ import {
   ResultFooter,
   ResultBtn,
 } from 'styles/pages/step';
+import { styled } from 'styled-components';
 
 const Step = () => {
   const [num1, onChangeNum1, setNum1, num1Error] = useInput('', 'num1');
@@ -95,10 +96,7 @@ const Step = () => {
       e.preventDefault();
 
       if (isNumInputs) setShowBadge(true);
-
-      if (stepHeaderRef.current) {
-        stepHeaderRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      }
+      stepHeaderRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
     },
     [isNumInputs],
   );
@@ -112,13 +110,8 @@ const Step = () => {
         setShowResult(true);
       }
 
-      console.log('폼222 실행!!');
-
+      stepHeaderRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
       if (!shareImageRef.current) return;
-
-      if (stepHeaderRef.current) {
-        stepHeaderRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      }
     },
     [isTextInputs],
   );
@@ -310,7 +303,7 @@ const Step = () => {
                 <img src={combinedImageSrc} alt="Combined Result" />
               </ResultImageWrapper>
             ) : (
-              <ResultImageWrapper ref={shareImageRef}>
+              <ResultImageWrapper ref={shareImageRef} $showResult={showResult}>
                 <ResultImageHeader>My Value</ResultImageHeader>
 
                 <ResultImage>

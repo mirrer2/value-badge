@@ -11,11 +11,6 @@ export const StepHeader = styled.header`
 
   & > button > img {
     margin-bottom: 1.06rem;
-    transition: opacity 200ms ease-in;
-  }
-
-  & > button > img:hover {
-    opacity: 50%;
   }
 
   & > div {
@@ -84,15 +79,6 @@ export const StepForm = styled.form`
     line-height: 1.25rem;
     letter-spacing: -0.03125rem;
     opacity: ${props => (props.$isNumInputs | props.$isTextInputs ? '100%' : '50%')};
-    transition: opacity 250ms ease-in;
-  }
-
-  & > button:hover {
-    opacity: 50%;
-  }
-
-  & > button:active {
-    opacity: 100%;
   }
 `;
 
@@ -111,7 +97,6 @@ export const Step1FormBtn = styled.button`
   letter-spacing: -0.03125rem;
   margin-top: 18.44rem;
   opacity: ${props => (props.$isNumInputs | props.$isTextInputs ? '100%' : '50%')};
-  transition: opacity 250ms ease-in;
 `;
 
 export const StepFormInput = styled.input`
@@ -242,6 +227,7 @@ export const ResultHeader = styled.div`
 `;
 
 export const ResultImageWrapper = styled.div`
+  transform: ${props => (props.$showResult ? 'translateY(-200%)' : 'translateY(0)')};
   margin-bottom: 6rem;
   background-color: #fcfcfc;
 `;
@@ -264,7 +250,6 @@ export const ResultImage = styled(StepForm)`
   & > div > div > div {
     ${({ theme }) => theme.flexSet()};
     width: 6rem;
-    /* height: 4rem; */
     padding: 0.5rem 0.75rem;
     border-radius: 1.125rem;
     border: 1px solid #d8d8d8;
@@ -321,14 +306,5 @@ export const ResultBtn = styled.div`
     font-weight: 500;
     line-height: 1.25rem;
     letter-spacing: -0.03125rem;
-    transition: opacity 250ms ease-in;
-  }
-
-  & > button:hover {
-    opacity: 50%;
-  }
-
-  & > button:active {
-    opacity: 100%;
   }
 `;
