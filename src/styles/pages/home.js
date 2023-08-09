@@ -33,6 +33,13 @@ export const HomeFooter = styled.div`
     background-color: #000000;
     color: #ffffff;
     margin-bottom: 7.31rem;
+    text-align: center;
+    font-family: Pretendard Variable;
+    font-size: 1.125rem;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.25rem;
+    letter-spacing: -0.03125rem;
   }
 
   & > img {

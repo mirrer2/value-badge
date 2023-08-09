@@ -96,7 +96,7 @@ const Step = () => {
       e.preventDefault();
 
       if (isNumInputs) setShowBadge(true);
-      stepHeaderRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      stepHeaderRef.current.scrollIntoView({ behavior: 'instant', block: 'start' });
     },
     [isNumInputs],
   );
@@ -110,7 +110,7 @@ const Step = () => {
         setShowResult(true);
       }
 
-      stepHeaderRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      stepHeaderRef.current.scrollIntoView({ behavior: 'instant', block: 'start' });
       if (!shareImageRef.current) return;
     },
     [isTextInputs],
